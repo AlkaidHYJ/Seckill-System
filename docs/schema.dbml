@@ -1,0 +1,122 @@
+// ============================================================
+// 秒杀系统 DB 模型 (DBML for dbdiagram.io)
+// 约定: 命名 snake_case; 时间 datetime; 金额 decimal(10,2)
+// 字段注释前缀: [不变]=创建后基本不改 / [会变]=运行期频繁变更(优化重点)
+// 库存权威源在 Redis; MySQL available_stock 落库同事务内 stock>=1 条件扣减兜底防超卖
+// 单场次秒杀: 活动与商品合并建模, 不拆表
+// ============================================================
+
+enum activity_status {
+  NOT_STARTED // 未开始
+  ONGOING     // 进行中
+  ENDED       // 已结束
+  PAUSED      // 已暂停(活动开关/降级)
+}
+
+enum order_status {
+  UNPAID         // 待支付(落库成功初始态)
+  PAID           // 已支付(终态)
+  CLOSED_TIMEOUT // 超时关闭(终态, 触发库存回补)
+}
+
+Table users {
+  id         bigint       [pk, increment]              // [不变] 用户ID, 主键
+  username   varchar(64)  [not null]                   // [不变] 登录名, 唯一, 登录鉴权用
+  password   varchar(128) [not null]                   // [会变] BCrypt 加密密码, 可改密
+  status     tinyint      [not null, default: 1]       // [会变] 账号状态: 1正常 0封禁(防黄牛风控位)
+  created_at datetime     [not null, default: `now()`] // [不变] 注册时间
+  updated_at datetime     [null]                       // [会变] 最后更新时间
+
+  Indexes {
+    username [unique, name: 'uk_username'] // 唯一索引, 兼登录查询
+  }
+}
+
+Table seckill_activity {
+  id              bigint          [pk, increment]              // [不变] 活动/商品ID, 主键
+  goods_name      varchar(128)    [not null]                   // [不变] 商品名称(下单时快照到订单)
+  goods_img       varchar(255)    [null]                       // [不变] 商品主图URL
+  original_price  decimal(10,2)   [not null, default: 0.00]    // [不变] 原价
+  seckill_price   decimal(10,2)   [not null, default: 0.00]    // [不变] 秒杀价
+  total_stock     int             [not null, default: 0]       // [不变] 总库存(活动初始化时同步到 Redis)
+  available_stock int             [not null, default: 0]       // [会变] MySQL 剩余库存; 落库时同事务内 UPDATE...WHERE available_stock>=1 条件扣减防超卖(写热点, 压测后再优化)
+  limit_per_user  int             [not null, default: 1]       // [不变] 每人限购数, 固定为 1
+  start_time      datetime        [not null]                   // [不变] 开抢时间
+  end_time        datetime        [not null]                   // [不变] 结束时间
+  status          activity_status [not null, default: 'NOT_STARTED'] // [会变] 活动状态, 时间/运营开关驱动
+  created_at      datetime        [not null, default: `now()`] // [不变] 创建时间
+  updated_at      datetime        [null]                       // [会变] 更新时间
+
+  Indexes {
+    (status, start_time) [name: 'idx_status_start'] // 列表查询: 按状态+开抢时间取进行中/即将开始
+  }
+
+  Note: '单场次秒杀, 一活动=一商品(合并建模, 不拆表); 库存权威在 Redis, 本表 available_stock 落库同事务兜底扣减'
+}
+
+Table orders {
+  id            bigint        [pk, increment]              // [不变] 订单自增主键(内部聚簇索引用)
+  order_no      varchar(32)   [not null]                   // [不变] 业务订单号, 带业务前缀(如 SK+yyyyMMdd+雪花序列), 对外唯一标识
+  user_id       bigint        [not null]                   // [不变] 下单用户, FK->users.id
+  activity_id   bigint        [not null]                   // [不变] 秒杀活动, FK->seckill_activity.id
+  goods_name    varchar(128)  [not null]                   // [不变] 商品名称快照(防活动改名)
+  seckill_price decimal(10,2) [not null, default: 0.00]    // [不变] 成交单价快照(防活动改价)
+  quantity      int           [not null, default: 1]       // [不变] 购买数量, 固定为 1
+  amount        decimal(10,2) [not null, default: 0.00]    // [不变] 应付金额 = seckill_price * quantity
+  status        order_status  [not null, default: 'UNPAID'] // [会变] 订单状态, 状态机 CAS 流转核心字段
+  create_time   datetime      [not null, default: `now()`] // [不变] 下单时间(超时判定基准)
+  pay_deadline  datetime      [not null]                   // [不变] 支付截止 = create_time + 15min(扫表/展示用)
+  pay_time      datetime      [null]                       // [会变] 支付完成时间
+  close_time    datetime      [null]                       // [会变] 关闭时间(超时取消)
+  close_reason  tinyint       [null]                       // [会变] 关闭原因: 1超时
+
+  Indexes {
+    order_no [unique, name: 'uk_order_no']          // 订单号唯一: 幂等落库 + 轮询查询依赖
+    (user_id, create_time) [name: 'idx_user_ctime'] // 我的订单列表查询
+    (status, pay_deadline) [name: 'idx_status_deadline'] // 扫描: UNPAID 且 pay_deadline<now()
+    (activity_id, user_id) [unique, name: 'uk_activity_user'] // 固定每人每活动一单
+  }
+
+  Note: 'CREATING/FAILED 是落库前的 Redis 侧状态, 不入本表; 本表仅存 UNPAID/PAID/CLOSED_TIMEOUT'
+}
+
+Table reconciliation_record {
+  id                    bigint       [pk, increment]              // [不变] 对账记录主键
+  activity_id           bigint       [not null]                   // [不变] 对账的活动, FK->seckill_activity.id
+  redis_stock           int          [not null]                   // [不变] 对账时 Redis 剩余库存快照
+  mysql_available_stock int          [not null]                   // [不变] 对账时 MySQL 剩余库存快照
+  sold_quantity         int          [not null]                   // [不变] 有效售出件数(UNPAID+PAID 的 quantity 总和)
+  redis_diff            int          [not null, default: 0]       // [不变] Redis 差异 = total_stock - redis_stock - sold_quantity
+  mysql_diff            int          [not null, default: 0]       // [不变] MySQL 差异 = total_stock - mysql_available_stock - sold_quantity
+  result                tinyint      [not null]                   // [不变] 结论: 0一致 1疑似超卖 2疑似少卖
+  detail                varchar(255) [null]                       // [不变] 差异明细/告警信息
+  created_at            datetime     [not null, default: `now()`] // [不变] 对账时间(append-only 日志)
+
+  Indexes {
+    (activity_id, created_at) [name: 'idx_act_ctime'] // 按活动查对账历史
+  }
+}
+
+Table stock_compensation {
+  id                bigint       [pk, increment]              // 补偿记录主键
+  order_no          varchar(32)  [not null]                   // 业务订单号, 补偿幂等键组成部分
+  activity_id       bigint       [not null]                   // 补偿活动, FK->seckill_activity.id
+  compensation_type varchar(32)  [not null]                   // CREATE_ROLLBACK / TIMEOUT_REFUND
+  status            varchar(16)  [not null, default: 'PENDING'] // PENDING / COMPENSATING / SUCCESS / FAILED
+  retry_count       int          [not null, default: 0]        // 已重试次数
+  last_error        varchar(255) [null]                       // 最近失败原因
+  next_retry_at     datetime     [null]                       // 下次重试时间
+  created_at        datetime     [not null, default: `now()`] // 创建时间
+  updated_at        datetime     [not null, default: `now()`] // 更新时间
+
+  Indexes {
+    (order_no, compensation_type) [unique, name: 'uk_compensation_order_type']
+    (status, next_retry_at) [name: 'idx_compensation_status_retry']
+  }
+}
+
+// ===================== 外键关系 =====================
+Ref: orders.user_id > users.id                              // 用户 1 - N 订单
+Ref: orders.activity_id > seckill_activity.id               // 活动 1 - N 订单
+Ref: reconciliation_record.activity_id > seckill_activity.id // 活动 1 - N 对账记录
+Ref: stock_compensation.activity_id > seckill_activity.id    // 活动 1 - N 补偿记录
