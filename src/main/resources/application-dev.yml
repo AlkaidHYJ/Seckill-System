@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+jwt:
+  secret: ${JWT_SECRET:change-this-development-secret-key-please}
+  expire: ${JWT_EXPIRE_SECONDS:7200}
+
+logging:
+  level:
+    root: INFO
+    com.example.flashsale: DEBUG
+    org.springframework.web: INFO
+    org.flywaydb: INFO

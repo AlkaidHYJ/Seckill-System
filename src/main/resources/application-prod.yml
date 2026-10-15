@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+jwt:
+  secret: ${JWT_SECRET}
+  expire: ${JWT_EXPIRE_SECONDS:7200}
+
+logging:
+  level:
+    root: WARN
+    com.example.flashsale: INFO
+    org.springframework.web: WARN
+    org.flywaydb: WARN
