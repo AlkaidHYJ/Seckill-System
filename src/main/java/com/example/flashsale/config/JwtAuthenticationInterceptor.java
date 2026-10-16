@@ -22,7 +22,8 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String authorization = request.getHeader("Authorization");
         if (authorization == null || !authorization.startsWith("Bearer ")) {
-            throw new BizException(ErrorCode.FORBIDDEN);
+            // 未携带凭证：未认证 401（FORBIDDEN/403 仅保留给"已认证但无权"，见 REST_API.md §1）
+            throw new BizException(ErrorCode.UNAUTHORIZED, "缺少 Authorization: Bearer <accessToken> 请求头");
         }
 
         try {
@@ -30,7 +31,8 @@ public class JwtAuthenticationInterceptor implements HandlerInterceptor {
             UserContext.setUserId(Long.valueOf(claims.getSubject()));
             return true;
         } catch (JwtException | IllegalArgumentException exception) {
-            throw new BizException(ErrorCode.FORBIDDEN);
+            // 凭证非法/过期/载荷不合法：仍属未认证 401
+            throw new BizException(ErrorCode.UNAUTHORIZED, "访问令牌无效或已过期，请重新登录");
         }
     }
 

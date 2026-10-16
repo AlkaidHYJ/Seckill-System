@@ -11,5 +11,6 @@ logging:
   level:
     root: INFO
     com.example.flashsale: DEBUG
+    com.zaxxer.hikari: DEBUG
     org.springframework.web: INFO
     org.flywaydb: INFO

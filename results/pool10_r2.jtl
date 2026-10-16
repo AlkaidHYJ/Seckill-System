@@ -1,0 +1,201 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1792138056429,292,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-178,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,292,0,55
+1792138056427,891,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-156,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,891,0,59
+1792138056434,631,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-143,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,631,0,52
+1792138056434,357,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-45,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,357,0,54
+1792138056426,414,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-104,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,414,0,66
+1792138056431,418,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-57,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,418,0,59
+1792138056430,352,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-51,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,352,0,61
+1792138056429,758,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-90,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,758,0,55
+1792138056427,303,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-17,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,303,0,65
+1792138056434,482,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-153,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,481,0,49
+1792138056434,492,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-73,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,492,0,50
+1792138056431,215,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-132,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,215,0,58
+1792138056429,672,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-127,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,672,0,61
+1792138056430,954,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-66,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,954,0,59
+1792138056434,221,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-128,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,221,0,57
+1792138056434,896,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-115,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,896,0,55
+1792138056434,462,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-155,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,462,0,54
+1792138056429,172,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-8,text,true,,403,437,200,200,http://localhost:8080/api/seckill/activities/2/buy,172,0,62
+1792138056427,190,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-16,text,true,,403,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,190,0,65
+1792138056434,306,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-119,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,306,0,53
+1792138056434,918,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-138,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,918,0,50
+1792138056431,178,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-92,text,true,,403,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,178,0,57
+1792138056430,508,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-180,text,true,,402,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,507,0,57
+1792138056434,779,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-35,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,779,0,49
+1792138056432,232,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-18,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,232,0,52
+1792138056434,140,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-26,text,true,,403,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,140,0,52
+1792138056431,281,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-135,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,281,0,59
+1792138056431,271,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-15,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,271,0,57
+1792138056430,152,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-10,text,true,,403,437,200,200,http://localhost:8080/api/seckill/activities/2/buy,152,0,56
+1792138056433,390,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-169,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,390,0,54
+1792138056433,159,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-174,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,159,0,54
+1792138056434,258,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-168,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,258,0,58
+1792138056431,329,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-74,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,328,0,55
+1792138056434,657,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-197,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,656,0,54
+1792138056434,203,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-199,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,203,0,50
+1792138056434,123,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-139,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,122,0,56
+1792138056431,243,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-136,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,243,0,52
+1792138056433,860,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-123,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,860,0,52
+1792138056431,613,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-89,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,613,0,51
+1792138056431,689,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-186,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,688,0,54
+1792138056433,568,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-60,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,568,0,55
+1792138056426,524,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-27,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,524,0,60
+1792138056434,620,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-162,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,620,0,49
+1792138056434,424,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-184,text,true,,403,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,424,0,57
+1792138056431,339,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-39,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,339,0,59
+1792138056429,372,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-43,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,372,0,62
+1792138056434,578,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-106,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,578,0,50
+1792138056425,819,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-110,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,818,0,65
+1792138056433,398,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-31,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,398,0,53
+1792138056434,588,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-82,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,588,0,51
+1792138056426,461,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-131,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,461,0,60
+1792138056432,940,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-173,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,940,0,53
+1792138056427,836,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-146,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,836,0,58
+1792138056434,433,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-19,text,true,,403,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,433,0,51
+1792138056430,553,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-91,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,553,0,57
+1792138056434,473,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-41,text,true,,404,438,200,200,http://localhost:8080/api/seckill/activities/2/buy,473,0,58
+1792138056426,848,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-187,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,848,0,58
+1792138056434,535,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-154,text,true,,404,439,200,200,http://localhost:8080/api/seckill/activities/2/buy,535,0,49
+1792138056433,984,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-134,text,true,,404,439,142,142,http://localhost:8080/api/seckill/activities/2/buy,984,0,55
+1792138056427,999,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-77,text,true,,404,438,141,141,http://localhost:8080/api/seckill/activities/2/buy,998,0,59
+1792138056431,1004,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-13,text,true,,404,438,140,140,http://localhost:8080/api/seckill/activities/2/buy,1003,0,54
+1792138056433,1011,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-6,text,true,,404,437,139,139,http://localhost:8080/api/seckill/activities/2/buy,1011,0,56
+1792138056429,1023,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-11,text,true,,403,438,138,138,http://localhost:8080/api/seckill/activities/2/buy,1023,0,58
+1792138056434,1029,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-107,text,true,,404,439,137,137,http://localhost:8080/api/seckill/activities/2/buy,1029,0,51
+1792138056433,1052,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-3,text,true,,404,438,136,136,http://localhost:8080/api/seckill/activities/2/buy,1052,0,53
+1792138056433,1062,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-23,text,true,,404,438,135,135,http://localhost:8080/api/seckill/activities/2/buy,1062,0,56
+1792138056431,1073,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-163,text,true,,404,439,134,134,http://localhost:8080/api/seckill/activities/2/buy,1073,0,52
+1792138056430,1083,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-76,text,true,,404,438,133,133,http://localhost:8080/api/seckill/activities/2/buy,1083,0,59
+1792138056427,1094,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-144,text,true,,404,439,132,132,http://localhost:8080/api/seckill/activities/2/buy,1094,0,64
+1792138056431,1109,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-140,text,true,,403,439,131,131,http://localhost:8080/api/seckill/activities/2/buy,1109,0,51
+1792138056425,1124,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-7,text,true,,404,437,130,130,http://localhost:8080/api/seckill/activities/2/buy,1124,0,64
+1792138056428,1129,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-67,text,true,,404,438,129,129,http://localhost:8080/api/seckill/activities/2/buy,1129,0,55
+1792138056426,1139,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-70,text,true,,404,438,128,128,http://localhost:8080/api/seckill/activities/2/buy,1139,0,57
+1792138056427,1147,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-69,text,true,,404,438,127,127,http://localhost:8080/api/seckill/activities/2/buy,1147,0,59
+1792138056433,1148,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-99,text,true,,404,438,126,126,http://localhost:8080/api/seckill/activities/2/buy,1148,0,49
+1792138056425,1164,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-198,text,true,,403,439,125,125,http://localhost:8080/api/seckill/activities/2/buy,1164,0,64
+1792138056433,1171,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-167,text,true,,404,439,124,124,http://localhost:8080/api/seckill/activities/2/buy,1171,0,56
+1792138056429,1182,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-21,text,true,,404,438,123,123,http://localhost:8080/api/seckill/activities/2/buy,1182,0,60
+1792138056427,1191,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-130,text,true,,402,439,122,122,http://localhost:8080/api/seckill/activities/2/buy,1191,0,61
+1792138056431,1209,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-133,text,true,,404,439,121,121,http://localhost:8080/api/seckill/activities/2/buy,1209,0,56
+1792138056434,1214,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-53,text,true,,404,438,120,120,http://localhost:8080/api/seckill/activities/2/buy,1214,0,54
+1792138056427,1240,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-141,text,true,,404,439,119,119,http://localhost:8080/api/seckill/activities/2/buy,1240,0,60
+1792138056431,1244,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-47,text,true,,404,438,118,118,http://localhost:8080/api/seckill/activities/2/buy,1244,0,58
+1792138056431,1252,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-96,text,true,,404,438,117,117,http://localhost:8080/api/seckill/activities/2/buy,1252,0,52
+1792138056431,1260,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-177,text,true,,404,439,116,116,http://localhost:8080/api/seckill/activities/2/buy,1260,0,52
+1792138056427,1271,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-147,text,true,,404,439,115,115,http://localhost:8080/api/seckill/activities/2/buy,1271,0,61
+1792138056431,1276,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-172,text,true,,404,439,114,114,http://localhost:8080/api/seckill/activities/2/buy,1276,0,53
+1792138056426,1298,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-78,text,true,,404,438,113,113,http://localhost:8080/api/seckill/activities/2/buy,1297,0,58
+1792138056427,1306,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-108,text,true,,404,439,112,112,http://localhost:8080/api/seckill/activities/2/buy,1305,0,64
+1792138056426,1315,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-83,text,true,,404,438,111,111,http://localhost:8080/api/seckill/activities/2/buy,1315,0,56
+1792138056430,1319,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-145,text,true,,404,439,110,110,http://localhost:8080/api/seckill/activities/2/buy,1319,0,53
+1792138056427,1329,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-25,text,true,,404,438,109,109,http://localhost:8080/api/seckill/activities/2/buy,1329,0,56
+1792138056431,1333,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-61,text,true,,404,438,108,108,http://localhost:8080/api/seckill/activities/2/buy,1333,0,51
+1792138056433,1352,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-100,text,true,,404,439,107,107,http://localhost:8080/api/seckill/activities/2/buy,1352,0,54
+1792138056433,1359,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-50,text,true,,404,438,106,106,http://localhost:8080/api/seckill/activities/2/buy,1359,0,54
+1792138056430,1370,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-30,text,true,,404,438,105,105,http://localhost:8080/api/seckill/activities/2/buy,1370,0,59
+1792138056430,1377,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-195,text,true,,404,439,104,104,http://localhost:8080/api/seckill/activities/2/buy,1377,0,58
+1792138056430,1386,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-124,text,true,,404,439,103,103,http://localhost:8080/api/seckill/activities/2/buy,1386,0,54
+1792138056426,1397,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-97,text,true,,404,438,102,102,http://localhost:8080/api/seckill/activities/2/buy,1397,0,57
+1792138056434,1397,POST /api/seckill/activities/2/buy,200,,Seckill Buyers - 200 threads 1-164,text,true,,404,439,101,101,http://localhost:8080/api/seckill/activities/2/buy,1396,0,55
+1792138056434,1421,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-75,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1420,0,54
+1792138056430,1430,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-193,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1430,0,61
+1792138056425,1439,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-84,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1439,0,68
+1792138056433,1477,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-95,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1477,0,58
+1792138056425,1408,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-71,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1408,0,67
+1792138056430,1407,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-85,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1407,0,52
+1792138056430,1405,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-37,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1404,0,54
+1792138056427,1477,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-56,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1477,0,66
+1792138056431,1491,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-170,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1487,0,58
+1792138056433,1434,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-33,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1434,0,60
+1792138056427,1447,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-63,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1447,0,64
+1792138056426,1465,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-62,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1465,0,65
+1792138056426,1466,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-194,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1466,0,61
+1792138056429,1494,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-118,text,true,,285,439,92,92,http://localhost:8080/api/seckill/activities/2/buy,1494,0,63
+1792138056426,1464,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-52,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1464,0,61
+1792138056427,1419,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-181,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1419,0,56
+1792138056431,1430,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-149,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1430,0,57
+1792138056426,1417,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-125,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1416,0,59
+1792138056426,1459,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-98,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1458,0,67
+1792138056433,1423,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-44,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1423,0,51
+1792138056429,1471,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-176,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1471,0,61
+1792138056434,1468,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-200,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1468,0,59
+1792138056428,1430,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-101,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1430,0,57
+1792138056430,1468,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-5,text,true,,285,437,100,100,http://localhost:8080/api/seckill/activities/2/buy,1467,0,57
+1792138056425,1423,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-152,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1423,0,68
+1792138056434,1475,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-64,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1473,0,55
+1792138056431,1446,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-137,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1446,0,59
+1792138056427,1500,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-157,text,true,,285,439,78,78,http://localhost:8080/api/seckill/activities/2/buy,1500,0,55
+1792138056431,1409,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-12,text,true,,285,437,100,100,http://localhost:8080/api/seckill/activities/2/buy,1409,0,58
+1792138056433,1441,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-40,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1440,0,61
+1792138056433,1412,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-117,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1412,0,56
+1792138056433,1463,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-46,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1463,0,60
+1792138056434,1398,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-109,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1398,0,50
+1792138056430,1441,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-129,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1441,0,61
+1792138056433,1418,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-142,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1418,0,58
+1792138056433,1446,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-55,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1446,0,58
+1792138056426,1474,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-79,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1474,0,59
+1792138056434,1401,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-158,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1401,0,49
+1792138056430,1498,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-148,text,true,,285,439,72,72,http://localhost:8080/api/seckill/activities/2/buy,1498,0,58
+1792138056425,1455,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-38,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1455,0,63
+1792138056434,1423,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-175,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1423,0,57
+1792138056425,1459,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-116,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1459,0,66
+1792138056431,1408,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-29,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1408,0,54
+1792138056425,1457,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-126,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1456,0,68
+1792138056434,1455,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-4,text,true,,285,437,100,100,http://localhost:8080/api/seckill/activities/2/buy,1455,0,59
+1792138056434,1415,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-192,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1415,0,59
+1792138056431,1447,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-171,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1447,0,56
+1792138056434,1420,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-166,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1420,0,56
+1792138056430,1501,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-190,text,true,,285,439,60,60,http://localhost:8080/api/seckill/activities/2/buy,1501,0,52
+1792138056426,1425,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-59,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1425,0,57
+1792138056426,1462,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-80,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1461,0,57
+1792138056431,1431,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-111,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1431,0,53
+1792138056426,1507,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-49,text,true,,285,438,51,51,http://localhost:8080/api/seckill/activities/2/buy,1506,0,65
+1792138056433,1454,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-189,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1453,0,56
+1792138056425,1416,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-150,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1416,0,67
+1792138056429,1487,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-36,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1487,0,60
+1792138056434,1461,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-54,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1461,0,58
+1792138056429,1418,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-185,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1418,0,62
+1792138056434,1480,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-22,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1480,0,49
+1792138056427,1508,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-93,text,true,,285,438,44,44,http://localhost:8080/api/seckill/activities/2/buy,1508,0,64
+1792138056426,1442,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-65,text,true,,285,438,100,100,http://localhost:8080/api/seckill/activities/2/buy,1442,0,67
+1792138056433,1480,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-196,text,true,,285,439,100,100,http://localhost:8080/api/seckill/activities/2/buy,1480,0,58
+1792138056433,1505,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-120,text,true,,285,439,39,39,http://localhost:8080/api/seckill/activities/2/buy,1505,0,59
+1792138056431,1508,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-28,text,true,,285,438,38,38,http://localhost:8080/api/seckill/activities/2/buy,1508,0,58
+1792138056427,1515,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-86,text,true,,285,438,36,36,http://localhost:8080/api/seckill/activities/2/buy,1515,0,59
+1792138056427,1516,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-159,text,true,,285,439,36,36,http://localhost:8080/api/seckill/activities/2/buy,1516,0,62
+1792138056433,1512,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-103,text,true,,285,439,34,34,http://localhost:8080/api/seckill/activities/2/buy,1511,0,60
+1792138056431,1517,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-20,text,true,,285,438,33,33,http://localhost:8080/api/seckill/activities/2/buy,1516,0,54
+1792138056433,1515,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-183,text,true,,285,439,33,33,http://localhost:8080/api/seckill/activities/2/buy,1515,0,60
+1792138056429,1522,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-179,text,true,,285,439,31,31,http://localhost:8080/api/seckill/activities/2/buy,1521,0,58
+1792138056429,1524,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-151,text,true,,285,439,30,30,http://localhost:8080/api/seckill/activities/2/buy,1524,0,55
+1792138056427,1527,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-14,text,true,,285,438,30,30,http://localhost:8080/api/seckill/activities/2/buy,1527,0,62
+1792138056434,1522,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-2,text,true,,285,438,28,28,http://localhost:8080/api/seckill/activities/2/buy,1522,0,53
+1792138056427,1531,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-102,text,true,,285,439,28,28,http://localhost:8080/api/seckill/activities/2/buy,1531,0,64
+1792138056426,1534,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-114,text,true,,285,439,26,26,http://localhost:8080/api/seckill/activities/2/buy,1534,0,63
+1792138056429,1532,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-34,text,true,,285,438,26,26,http://localhost:8080/api/seckill/activities/2/buy,1532,0,65
+1792138056426,1537,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-94,text,true,,285,438,24,24,http://localhost:8080/api/seckill/activities/2/buy,1537,0,59
+1792138056427,1537,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-68,text,true,,285,438,24,24,http://localhost:8080/api/seckill/activities/2/buy,1537,0,65
+1792138056434,1532,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-105,text,true,,285,439,22,22,http://localhost:8080/api/seckill/activities/2/buy,1532,0,60
+1792138056432,1536,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-32,text,true,,285,438,21,21,http://localhost:8080/api/seckill/activities/2/buy,1536,0,61
+1792138056429,1541,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-58,text,true,,285,438,20,20,http://localhost:8080/api/seckill/activities/2/buy,1540,0,65
+1792138056431,1541,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-188,text,true,,285,439,19,19,http://localhost:8080/api/seckill/activities/2/buy,1541,0,55
+1792138056426,1548,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-121,text,true,,285,439,18,18,http://localhost:8080/api/seckill/activities/2/buy,1548,0,68
+1792138056431,1547,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-191,text,true,,285,439,17,17,http://localhost:8080/api/seckill/activities/2/buy,1547,0,54
+1792138056429,1550,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-122,text,true,,285,439,17,17,http://localhost:8080/api/seckill/activities/2/buy,1550,0,59
+1792138056431,1551,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-1,text,true,,285,437,15,15,http://localhost:8080/api/seckill/activities/2/buy,1551,0,62
+1792138056433,1552,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-24,text,true,,285,438,14,14,http://localhost:8080/api/seckill/activities/2/buy,1552,0,58
+1792138056427,1559,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-160,text,true,,285,439,14,14,http://localhost:8080/api/seckill/activities/2/buy,1559,0,67
+1792138056434,1554,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-42,text,true,,285,438,12,12,http://localhost:8080/api/seckill/activities/2/buy,1554,0,59
+1792138056427,1564,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-112,text,true,,285,439,11,11,http://localhost:8080/api/seckill/activities/2/buy,1563,0,67
+1792138056431,1561,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-161,text,true,,285,439,11,11,http://localhost:8080/api/seckill/activities/2/buy,1561,0,63
+1792138056427,1566,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-165,text,true,,285,439,9,9,http://localhost:8080/api/seckill/activities/2/buy,1566,0,67
+1792138056431,1565,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-72,text,true,,285,438,8,8,http://localhost:8080/api/seckill/activities/2/buy,1565,0,63
+1792138056433,1566,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-9,text,true,,285,437,7,7,http://localhost:8080/api/seckill/activities/2/buy,1565,0,61
+1792138056426,1574,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-81,text,true,,285,438,7,7,http://localhost:8080/api/seckill/activities/2/buy,1574,0,68
+1792138056430,1573,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-88,text,true,,285,438,5,5,http://localhost:8080/api/seckill/activities/2/buy,1573,0,63
+1792138056427,1577,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-182,text,true,,285,439,5,5,http://localhost:8080/api/seckill/activities/2/buy,1577,0,67
+1792138056434,1572,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-48,text,true,,285,438,3,3,http://localhost:8080/api/seckill/activities/2/buy,1572,0,59
+1792138056433,1574,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-87,text,true,,285,438,3,3,http://localhost:8080/api/seckill/activities/2/buy,1574,0,61
+1792138056431,1578,POST /api/seckill/activities/2/buy,400,business rejection code=2008,Seckill Buyers - 200 threads 1-113,text,true,,285,439,1,1,http://localhost:8080/api/seckill/activities/2/buy,1577,0,63

@@ -10,6 +10,7 @@ public enum ErrorCode {
     MISSING_PARAMETER(1002, "缺少必填参数或 Header"),
     INVALID_IDEMPOTENCY_KEY(1003, "幂等键格式非法"),
     INVALID_REQUEST_BODY(1004, "请求体格式非法"),
+    UNAUTHORIZED(1005, "未认证：缺少或无效的 JWT 访问令牌"),
 
     FORBIDDEN(2001, "账号被封禁或无权访问资源"),
     ACTIVITY_NOT_FOUND(2002, "活动不存在"),
