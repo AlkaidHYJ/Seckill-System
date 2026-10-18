@@ -8,5 +8,8 @@ logs/
 # 压测敏感数据与生成物（详见 docs/v1-git.md）
 # users.csv 含 200 个真实 JWT，绝对不能入库；模板用 users.csv.example
 docs/loadtest/users.csv
-# JMeter HTML 报告为生成物（体积大、可重复生成），原始 jtl 保留作证据
+# JMeter 原始结果为本地压测生成物；报告只保留汇总指标与路径
+results/*.jtl
+docs/loadtest/results/
+# JMeter HTML 报告和原始 jtl 均为生成物（体积大、可重复生成）
 results/html*/
