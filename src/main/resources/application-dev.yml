@@ -2,6 +2,32 @@ spring:
   config:
     activate:
       on-profile: dev
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:0}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:seckill}
+    password: ${RABBITMQ_PASSWORD:111111}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:/}
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+
+app:
+  rabbitmq:
+    order:
+      exchange: ${RABBITMQ_ORDER_EXCHANGE:seckill.order.exchange}
+      queue: ${RABBITMQ_ORDER_QUEUE:seckill.order.queue}
+      routing-key: ${RABBITMQ_ORDER_ROUTING_KEY:order.create}
+      dlx-exchange: ${RABBITMQ_ORDER_DLX_EXCHANGE:seckill.order.dlx}
+      dlx-queue: ${RABBITMQ_ORDER_DLX_QUEUE:seckill.order.dlq}
 
 jwt:
   secret: ${JWT_SECRET:change-this-development-secret-key-please}

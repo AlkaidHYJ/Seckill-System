@@ -3,6 +3,7 @@ package com.example.flashsale.service;
 import com.example.flashsale.common.ErrorCode;
 import com.example.flashsale.common.DuplicateKeyResolver;
 import com.example.flashsale.common.DuplicateKeyResolver.DuplicateKey;
+import com.example.flashsale.enums.SeckillLuaResult;
 import com.example.flashsale.entity.Order;
 import com.example.flashsale.entity.Order.OrderStatus;
 import com.example.flashsale.entity.SeckillActivity;
@@ -10,6 +11,8 @@ import com.example.flashsale.entity.SeckillActivity.ActivityStatus;
 import com.example.flashsale.exception.BizException;
 import com.example.flashsale.mapper.OrderMapper;
 import com.example.flashsale.mapper.SeckillActivityMapper;
+import com.example.flashsale.mq.OrderMessage;
+import com.example.flashsale.mq.OrderMessageProducer;
 import com.example.flashsale.vo.SeckillResponse;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -31,14 +34,50 @@ public class SeckillService {
 
     private final SeckillActivityMapper activityMapper;
     private final OrderMapper orderMapper;
+    private final SeckillLuaService seckillLuaService;
+    private final OrderMessageProducer orderMessageProducer;
 
-    public SeckillService(SeckillActivityMapper activityMapper, OrderMapper orderMapper) {
+    public SeckillService(
+            SeckillActivityMapper activityMapper,
+            OrderMapper orderMapper,
+            SeckillLuaService seckillLuaService,
+            OrderMessageProducer orderMessageProducer) {
         this.activityMapper = activityMapper;
         this.orderMapper = orderMapper;
+        this.seckillLuaService = seckillLuaService;
+        this.orderMessageProducer = orderMessageProducer;
+    }
+
+    public SeckillResponse createOrder(Long activityId, Long userId) {
+        LocalDateTime now = LocalDateTime.now();
+        SeckillActivity activity = activityMapper.selectById(activityId);
+        validateActivity(activity, now);
+
+        String orderNo = generateOrderNo(now);
+        SeckillLuaResult luaResult = seckillLuaService.execute(activityId, userId, orderNo);
+        if (luaResult == SeckillLuaResult.STOCK_EMPTY) {
+            throw new BizException(ErrorCode.INSUFFICIENT_STOCK);
+        }
+        if (luaResult == SeckillLuaResult.DUPLICATE) {
+            throw new BizException(ErrorCode.ORDER_ALREADY_EXISTS);
+        }
+
+        BigDecimal price = activity.getSeckillPrice();
+        OrderMessage message = new OrderMessage(
+            orderNo,
+            userId,
+            activity.getId(),
+            activity.getGoodsName(),
+            price.multiply(BigDecimal.valueOf(ORDER_QUANTITY)));
+        seckillLuaService.addCreatingOrder(
+                orderNo,
+                System.currentTimeMillis() + 300_000L);
+        orderMessageProducer.send(message);
+        return new SeckillResponse(orderNo, OrderStatus.CREATING, toOffsetDateTime(now));
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public SeckillResponse createOrder(Long activityId, Long userId) {
+    public SeckillResponse createOrderV1Fallback(Long activityId, Long userId) {
         LocalDateTime now = LocalDateTime.now();
         SeckillActivity activity = activityMapper.selectById(activityId);
         validateActivity(activity, now);

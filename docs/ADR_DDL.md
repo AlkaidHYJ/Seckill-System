@@ -140,3 +140,69 @@ stateDiagram-v2
 - `quantity=2` 必须被 `ck_order_quantity` 拒绝。
 - `CREATING/FAILED` 不得出现在 `orders`。
 - 测试脚本为 `docs/test_v2.sql`；执行预期失败用例时使用 MySQL 客户端 `--force`。
+
+## ADR-016 Publisher Confirm 不确定窗口与消费侧状态防线
+
+- **状态**：已采纳
+- **日期**：2026-10-17
+- **范围**：v2 Redis 预扣、RabbitMQ 异步落库和订单查询
+
+### 背景
+
+Publisher Confirm 存在极小的不确定窗口：消息可能已经被 Broker 投递或消费者处理，但发布端因网络异常收到失败或超时确认。若只依赖发布端回滚，可能出现重复消费或 Redis 回滚与 MySQL 已落库并存的短暂风险。
+
+### 决策
+
+1. Consumer 处理前读取 `order:state:{orderNo}`：
+  - `CREATING`：继续处理；
+  - `FAILED`：直接 ACK，丢弃已由发布端回滚的消息；
+  - `UNPAID`：直接 ACK，丢弃已处理消息；
+  - Key 不存在：直接 ACK，丢弃过期或非法消息。
+2. `seckill_full.lua` 原子写入 `order:owner:{orderNo} = userId`，TTL 与订单状态相同。`CREATING/FAILED` 查询必须校验 owner，不允许仅凭 orderNo 读取他人状态。
+3. Consumer 的数据库失败重试采用应用层固定退避 `100ms -> 500ms -> 1s`，不引入延迟队列；三次失败后回滚 Redis、写 `FAILED`，并使用 `basicNack(requeue=false)` 进入 DLX。
+4. Confirm 不确定窗口作为已知限制记录到 v2 复盘，由 v4 对账发现 Redis、MySQL 和订单聚合差异。
+
+### 后果
+
+- 大部分重复投递和晚到消息在 Consumer 入口被状态拦截。
+- `order:owner` 增加一个短 TTL Redis Key 和一次 Lua 写入，但修复了 CREATING/FAILED 查询越权。
+- 应用层退避会短暂占用 Consumer 线程，但实现简单，且避免引入延迟队列。
+- Confirm 不确定窗口不能被 v2 完全消除，必须依靠 v4 对账暴露残余差异。
+
+## ADR-010 MQ 发布失败与 CREATING 补偿
+
+- **状态**：已采纳
+- **日期**：2026-10-18
+- **范围**：v2 Redis 预扣、MQ 异步落库和 CREATING 超时处理
+
+### 背景
+
+Redis Lua 预扣成功后，订单会进入 `CREATING` 并写入 `seckill:creating` ZSET。MQ 发布确认失败、消费者处理失败或应用异常退出，都可能使订单长期停留在 `CREATING`，造成 Redis 库存和用户限购标记被占用。
+
+### 决策
+
+1. `CreatingCompensationJob` 每 30 秒执行一次：
+  `ZRANGEBYSCORE seckill:creating 0 now LIMIT 0 100`。
+2. 逐条读取 `order:state:{orderNo}`：
+  - `CREATING`：执行 `rollback.lua`；
+  - 其他状态或 Key 不存在：只删除 ZSET 成员，不改库存。
+3. `rollback.lua` 首先检查 state 是否为 `CREATING`。只有检查通过时，才执行库存 `INCR`、删除用户标记、写 `FAILED` 和 `ZREM`；因此重复执行不会重复回滚库存。
+4. Redis 异常、Key 缺失或脚本失败时保留 ZSET 成员，下一轮继续重试；按订单记录失败次数，超过 3 次输出告警日志并增加告警计数器。
+5. MQ Publisher Confirm 失败和 CREATING 超时共用同一回滚语义。v2 不使用延迟队列；RabbitMQ DLX 只承接消费者重试耗尽后的消息，不负责触发补偿。
+
+### 关键 Key
+
+| Key | 用途 | TTL |
+|---|---|---|
+| `seckill:creating` | `orderNo -> expireAt` 补偿索引 | 随成员收敛删除 |
+| `order:state:{orderNo}` | 判断是否仍可回滚 | 300 秒 |
+| `order:owner:{orderNo}` | 构造用户限购 Key | 300 秒 |
+| `order:activity:{orderNo}` | 构造库存 Key | 300 秒 |
+| `order:compensation:attempts:{orderNo}` | 失败次数和超 3 次告警 | 24 小时 |
+
+### 后果
+
+- 发布失败和 CREATING 超时最终共享一致的 Redis 回滚逻辑，降低重复实现和幂等风险。
+- 补偿任务最多每批处理 100 条，单轮处理能力有限，积压需要通过日志和指标观测。
+- 补偿失败不会从 ZSET 删除，Redis 故障恢复后可以继续收敛。
+- 超过 3 次只告警，不在 v2 自动改 MySQL；残余 Redis/MySQL 差异由 v4 对账发现。

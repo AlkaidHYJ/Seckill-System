@@ -56,6 +56,8 @@ public class Order {
     private Integer closeReason;
 
     public enum OrderStatus {
+        CREATING,
+        FAILED,
         UNPAID,
         PAID,
         CLOSED_TIMEOUT
