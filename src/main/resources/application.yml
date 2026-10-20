@@ -23,6 +23,12 @@ spring:
     time-zone: Asia/Shanghai
     serialization:
       write-dates-as-timestamps: false
+  task:
+    scheduling:
+      # 三个定时任务（JOB-01/02/03）各自独占线程，避免 JOB-03 单轮耗时拖慢 JOB-01/02
+      pool:
+        size: ${SCHEDULING_POOL_SIZE:3}
+      thread-name-prefix: seckill-sched-
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -34,7 +40,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        include: health,info,metrics
   endpoint:
     health:
       show-details: never
@@ -52,11 +58,19 @@ springdoc:
 
 server:
   port: ${SERVER_PORT:8080}
+  tomcat:
+    # v3 在 200 线程同瞬建连时偶发 Connection refused（r1/r3 各 51/33 次），归因 accept 队列深度不足
+    # （Tomcat 默认 100）。v4 调大为 200 验证突发建连；threads.max / max-connections 保持默认，
+    # 一次只动一个变量以保证可归因。压测跑 dev profile，故写入基础 application.yml（同时覆盖 dev/prod）。
+    accept-count: ${SERVER_TOMCAT_ACCEPT_COUNT:200}
 
 seckill:
   rate-limit:
     user-per-second: ${SECKILL_RATE_LIMIT_USER_PER_SECOND:5}
     ip-per-second: ${SECKILL_RATE_LIMIT_IP_PER_SECOND:20}
+  slow-sql:
+    # 慢 SQL 日志阈值（ms）：仅对 SELECT/UPDATE 生效，执行耗时超阈值打 WARN
+    threshold-ms: ${SECKILL_SLOW_SQL_THRESHOLD_MS:500}
 
 logging:
   level:

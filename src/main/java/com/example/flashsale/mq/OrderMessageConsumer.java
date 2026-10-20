@@ -1,8 +1,11 @@
 package com.example.flashsale.mq;
 
 import com.rabbitmq.client.Channel;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,37 +24,63 @@ public class OrderMessageConsumer {
     private static final String USER_KEY_PREFIX = "seckill:user:";
     private static final String CREATING_ZSET = "seckill:creating";
     private static final int MAX_ATTEMPTS = 3;
+    private static final String TRACE_ID_KEY = "traceId";
 
     private final StringRedisTemplate stringRedisTemplate;
     private final OrderPersistenceService persistenceService;
+    private final Counter consumeSuccessCounter;
+    private final Counter consumeFailCounter;
+    private final Counter consumeRetryCounter;
 
     public OrderMessageConsumer(
             StringRedisTemplate stringRedisTemplate,
-            OrderPersistenceService persistenceService) {
+            OrderPersistenceService persistenceService,
+            MeterRegistry meterRegistry) {
         this.stringRedisTemplate = stringRedisTemplate;
         this.persistenceService = persistenceService;
+        this.consumeSuccessCounter = Counter.builder("mq.consume.success")
+                .description("Order messages persisted and acknowledged")
+                .register(meterRegistry);
+        this.consumeFailCounter = Counter.builder("mq.consume.fail")
+                .description("Order messages exhausted retries and negatively acknowledged")
+                .register(meterRegistry);
+        this.consumeRetryCounter = Counter.builder("mq.consume.retry")
+                .description("Order message processing retry attempts")
+                .register(meterRegistry);
     }
 
     @RabbitListener(queues = "${app.rabbitmq.order.queue:seckill.order.queue}")
     public void consume(OrderMessage message, Channel channel, Message rawMessage) throws IOException {
         long deliveryTag = rawMessage.getMessageProperties().getDeliveryTag();
-        String state = getState(message);
-        if (!"CREATING".equals(state)) {
-            channel.basicAck(deliveryTag, false);
-            return;
+        Object headerTraceId = rawMessage.getMessageProperties().getHeader(TRACE_ID_KEY);
+        if (headerTraceId != null) {
+            MDC.put(TRACE_ID_KEY, headerTraceId.toString());
         }
-
+        log.info("消费订单消息: orderNo={}, traceId={}",
+                message.getOrderNo(), MDC.get(TRACE_ID_KEY));
         try {
-            retryWithBackoff(() -> persistenceService.persist(message));
-            stringRedisTemplate.opsForValue().set(
-                    ORDER_STATE_KEY_PREFIX + message.getOrderNo(),
-                    "UNPAID",
-                    Duration.ofSeconds(300));
-            stringRedisTemplate.opsForZSet().remove(CREATING_ZSET, message.getOrderNo());
-            channel.basicAck(deliveryTag, false);
-        } catch (Exception exception) {
-            rollback(message, exception);
-            channel.basicNack(deliveryTag, false, false);
+            String state = getState(message);
+            if (!"CREATING".equals(state)) {
+                channel.basicAck(deliveryTag, false);
+                return;
+            }
+
+            try {
+                retryWithBackoff(() -> persistenceService.persist(message));
+                stringRedisTemplate.opsForValue().set(
+                        ORDER_STATE_KEY_PREFIX + message.getOrderNo(),
+                        "UNPAID",
+                        Duration.ofSeconds(300));
+                stringRedisTemplate.opsForZSet().remove(CREATING_ZSET, message.getOrderNo());
+                channel.basicAck(deliveryTag, false);
+                consumeSuccessCounter.increment();
+            } catch (Exception exception) {
+                rollback(message, exception);
+                channel.basicNack(deliveryTag, false, false);
+                consumeFailCounter.increment();
+            }
+        } finally {
+            MDC.remove(TRACE_ID_KEY);
         }
     }
 
@@ -67,6 +96,7 @@ public class OrderMessageConsumer {
                 if (attempt == MAX_ATTEMPTS - 1) {
                     throw exception;
                 }
+                consumeRetryCounter.increment();
                 try {
                     Thread.sleep(delays[attempt]);
                 } catch (InterruptedException interruptedException) {

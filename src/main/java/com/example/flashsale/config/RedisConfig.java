@@ -62,6 +62,14 @@ public class RedisConfig {
     }
 
     @Bean
+    public RedisScript<Long> refundStockScript() {
+        DefaultRedisScript<Long> script = new DefaultRedisScript<>();
+        script.setLocation(new ClassPathResource("lua/refund_stock.lua"));
+        script.setResultType(Long.class);
+        return script;
+    }
+
+    @Bean
     public RedisScript<Long> seckillRateLimitScript() {
         DefaultRedisScript<Long> script = new DefaultRedisScript<>();
         script.setLocation(new ClassPathResource("lua/seckill_rate_limit.lua"));
