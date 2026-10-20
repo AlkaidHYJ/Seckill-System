@@ -42,7 +42,7 @@
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">false</boolProp>
           <boolProp name="stopThread">true</boolProp>
-          <stringProp name="shareMode">shareMode.thread</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="JWT and JSON Headers" enabled="true">
@@ -93,6 +93,18 @@ vars.put('path', data.path.toString())</stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Tag token biz code" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">def body = prev.getResponseDataAsString()
+def m = (body =~ /"code"\s*:\s*(-?\d+)/)
+def code = m.find() ? m.group(1) : 'NA'
+prev.setSampleLabel(prev.getSampleLabel().replaceAll(/\s*\[[^\]]*\]$/, '') + ' [' + code + ']')</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/seckill/activities/{id}/buy/{path}" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
@@ -114,17 +126,28 @@ vars.put('path', data.path.toString())</stringProp>
             <collectionProp name="HeaderManager.headers"><elementProp name="X-Seckill-Token" elementType="Header"><stringProp name="Header.name">X-Seckill-Token</stringProp><stringProp name="Header.value">${seckillToken}</stringProp></elementProp></collectionProp>
           </HeaderManager>
           <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Tag buy biz code" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">def body = prev.getResponseDataAsString()
+def m = (body =~ /"code"\s*:\s*(-?\d+)/)
+def code = m.find() ? m.group(1) : 'NA'
+prev.setSampleLabel(prev.getSampleLabel().replaceAll(/\s*\[[^\]]*\]$/, '') + ' [' + code + ']')</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
         </hashTree>
       </hashTree>
       <ResultCollector guiclass="AggregateReport" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp><name>saveConfig</name><value class="SampleSaveConfiguration"><time>true</time><latency>true</latency><timestamp>true</timestamp><success>true</success><label>true</label><code>true</code><message>true</message><threadName>true</threadName><dataType>true</dataType><assertions>true</assertions><url>true</url><threadCounts>true</threadCounts><connectTime>true</connectTime></value></objProp>
+        <objProp><name>saveConfig</name><value class="SampleSaveConfiguration"><time>true</time><latency>true</latency><timestamp>true</timestamp><success>true</success><label>true</label><code>true</code><message>true</message><threadName>true</threadName><dataType>true</dataType><assertions>true</assertions><responseData>true</responseData><url>true</url><threadCounts>true</threadCounts><connectTime>true</connectTime></value></objProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp><name>saveConfig</name><value class="SampleSaveConfiguration"><time>true</time><latency>true</latency><timestamp>true</timestamp><success>true</success><label>true</label><code>true</code><message>true</message><threadName>true</threadName><dataType>true</dataType><assertions>true</assertions><url>true</url><threadCounts>true</threadCounts><connectTime>true</connectTime></value></objProp>
+        <objProp><name>saveConfig</name><value class="SampleSaveConfiguration"><time>true</time><latency>true</latency><timestamp>true</timestamp><success>true</success><label>true</label><code>true</code><message>true</message><threadName>true</threadName><dataType>true</dataType><assertions>true</assertions><responseData>true</responseData><url>true</url><threadCounts>true</threadCounts><connectTime>true</connectTime></value></objProp>
         <stringProp name="filename">results/v3_summary.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
