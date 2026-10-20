@@ -5,6 +5,9 @@ import com.example.flashsale.entity.Order;
 import com.example.flashsale.exception.BizException;
 import com.example.flashsale.mapper.OrderMapper;
 import com.example.flashsale.vo.OrderVO;
+import io.lettuce.core.RedisConnectionException;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.RedisSystemException;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -32,11 +35,25 @@ public class OrderService {
     }
 
     public Order requireOwned(String orderNo, Long userId) {
-        String redisState = stringRedisTemplate.opsForValue()
-                .get(ORDER_STATE_KEY_PREFIX + orderNo);
+        String redisState;
+        try {
+            redisState = stringRedisTemplate.opsForValue()
+                    .get(ORDER_STATE_KEY_PREFIX + orderNo);
+        } catch (RedisConnectionException | RedisSystemException exception) {
+            throw new BizException(ErrorCode.REDIS_UNAVAILABLE, "Redis 不可用，订单暂时无法查询");
+        } catch (DataAccessException exception) {
+            throw new BizException(ErrorCode.REDIS_UNAVAILABLE, "Redis 操作失败，订单暂时无法查询");
+        }
         if ("CREATING".equals(redisState) || "FAILED".equals(redisState)) {
-            String ownerId = stringRedisTemplate.opsForValue()
-                    .get(ORDER_OWNER_KEY_PREFIX + orderNo);
+            String ownerId;
+            try {
+                ownerId = stringRedisTemplate.opsForValue()
+                        .get(ORDER_OWNER_KEY_PREFIX + orderNo);
+            } catch (RedisConnectionException | RedisSystemException exception) {
+                throw new BizException(ErrorCode.REDIS_UNAVAILABLE, "Redis 不可用，订单暂时无法查询");
+            } catch (DataAccessException exception) {
+                throw new BizException(ErrorCode.REDIS_UNAVAILABLE, "Redis 操作失败，订单暂时无法查询");
+            }
             if (ownerId == null) {
                 throw new BizException(ErrorCode.ORDER_NOT_FOUND);
             }

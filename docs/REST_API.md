@@ -160,7 +160,6 @@ Header：
 | Header | 类型 | 必填 | 校验 |
 |---|---|---:|---|
 | `Authorization` | `string` | 是 | 有效 JWT |
-| `X-Idempotency-Key` | `string` | 是 | 1~64 个 ASCII 字符；同用户、同活动、同 key 重放返回同一结果 |
 | `X-Seckill-Token` | `string` | 是 | API-04 返回的凭证 |
 
 Body：无。`quantity` 不开放，由服务端固定为 `1`。
@@ -176,9 +175,9 @@ Path 参数：`activityId` 为正整数；`path` 为 API-04 返回的非空不�
 | `acceptedAt` | `string` | 请求受理时间 |
 | `pollAfterMs` | `int32` | 建议下次轮询间隔 |
 
-可能错误：`1005` 未认证（未携带或令牌无效/过期，HTTP `401`）、`1001` 参数或幂等键错误、`2006` 凭证无效/已使用/已过期、`2007` 已超过限购、`2008` 库存不足、`2009` 活动不可下单、`2010` 已存在该活动订单、`2013` 请求过于频繁、`5002` Redis 不可用、`5003` 消息发布失败、`5004` 数据库访问或事务失败、`5005` 依赖服务超时。
+可能错误：`1005` 未认证（未携带或令牌无效/过期，HTTP `401`）、`1002` 缺少 `X-Seckill-Token`、`2006` 凭证无效/已使用/已过期、`2007` 已超过限购、`2008` 库存不足、`2009` 活动不可下单、`2010` 已存在该活动订单、`5002` Redis 不可用、`5003` 消息发布失败、`5004` 数据库访问或事务失败、`5005` 依赖服务超时。
 
-幂等：`X-Idempotency-Key` 只写入 Redis 做短期去重，不落库；一次性 `path` 成功后作废；MySQL `uk_activity_user(activity_id,user_id)` 防止每人每活动多单，`uk_order_no` 防止重复落库。Redis 预扣成功后返回 `CREATING`；消息发布或消费失败最终返回 `FAILED`。
+幂等：一次性 `path` 在同一个 Lua 脚本中成功校验后标记 `USED`；MySQL `uk_activity_user(activity_id,user_id)` 防止每人每活动多单，`uk_order_no` 防止重复落库。Redis 预扣成功后返回 `CREATING`；消息发布或消费失败最终返回 `FAILED`。本批不实现限流。
 
 鉴权：需要 JWT、有效秒杀 token 和 path，三者必须绑定同一用户与活动。
 

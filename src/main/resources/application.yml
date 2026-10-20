@@ -53,6 +53,11 @@ springdoc:
 server:
   port: ${SERVER_PORT:8080}
 
+seckill:
+  rate-limit:
+    user-per-second: ${SECKILL_RATE_LIMIT_USER_PER_SECOND:5}
+    ip-per-second: ${SECKILL_RATE_LIMIT_IP_PER_SECOND:20}
+
 logging:
   level:
     com.zaxxer.hikari: DEBUG

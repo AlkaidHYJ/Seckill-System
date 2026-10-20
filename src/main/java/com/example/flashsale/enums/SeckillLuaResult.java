@@ -3,7 +3,8 @@ package com.example.flashsale.enums;
 public enum SeckillLuaResult {
     SUCCESS(0),
     STOCK_EMPTY(1),
-    DUPLICATE(2);
+    DUPLICATE(2),
+    INVALID_TOKEN(3);
 
     private final long code;
 

@@ -48,13 +48,17 @@ public class SeckillService {
         this.orderMessageProducer = orderMessageProducer;
     }
 
-    public SeckillResponse createOrder(Long activityId, Long userId) {
+    public SeckillResponse createOrder(Long activityId, Long userId, String path, String seckillToken) {
         LocalDateTime now = LocalDateTime.now();
         SeckillActivity activity = activityMapper.selectById(activityId);
         validateActivity(activity, now);
 
         String orderNo = generateOrderNo(now);
-        SeckillLuaResult luaResult = seckillLuaService.execute(activityId, userId, orderNo);
+        SeckillLuaResult luaResult = seckillLuaService.execute(
+            activityId, userId, path, seckillToken, orderNo);
+        if (luaResult == SeckillLuaResult.INVALID_TOKEN) {
+            throw new BizException(ErrorCode.INVALID_SECKILL_TOKEN);
+        }
         if (luaResult == SeckillLuaResult.STOCK_EMPTY) {
             throw new BizException(ErrorCode.INSUFFICIENT_STOCK);
         }

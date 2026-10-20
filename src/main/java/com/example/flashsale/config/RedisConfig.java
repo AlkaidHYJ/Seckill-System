@@ -60,4 +60,12 @@ public class RedisConfig {
         script.setResultType(Long.class);
         return script;
     }
+
+    @Bean
+    public RedisScript<Long> seckillRateLimitScript() {
+        DefaultRedisScript<Long> script = new DefaultRedisScript<>();
+        script.setLocation(new ClassPathResource("lua/seckill_rate_limit.lua"));
+        script.setResultType(Long.class);
+        return script;
+    }
 }
